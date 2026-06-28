@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MixerGrief — Заявка в команду</title>
+  <link rel="icon" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/">
+      <img src="/logo.png" alt="MixerGrief" class="logo-mark" />
+      <span class="logo-text">Mixer<b>Grief</b></span>
+    </a>
+    <span class="badge"><i class="dot"></i> Набор открыт</span>
+  </header>
+
+  <main class="container">
+    <!-- Экран входа -->
+    <section id="login-screen" class="card screen hidden">
+      <img src="/logo.png" alt="MixerGrief" class="hero-logo" />
+      <h1>Вход в заявку</h1>
+      <p class="lead">Чтобы подать заявку в команду, войдите через Discord — ваш ник и ID
+        подставятся автоматически. Доступ открыт для всех.</p>
+      <button id="login-btn" class="btn btn-discord">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.25.5a18 18 0 0 1 4.3 1.4 16.6 16.6 0 0 0-12.9 0A18 18 0 0 1 10.85 3.5L10.6 3a19.8 19.8 0 0 0-4.9 1.4C2.6 9 1.8 13.5 2.2 17.9A19.9 19.9 0 0 0 8.3 21l.4-.6a13 13 0 0 1-2-1c.17-.12.33-.25.49-.38a14.2 14.2 0 0 0 12.1 0c.16.13.32.26.49.38a13 13 0 0 1-2 1l.4.6a19.9 19.9 0 0 0 6.08-3.1c.5-5.1-.8-9.5-3.46-13.5ZM8.9 15.3c-1.18 0-2.15-1.08-2.15-2.4 0-1.32.95-2.4 2.15-2.4s2.17 1.08 2.15 2.4c0 1.32-.95 2.4-2.15 2.4Zm6.2 0c-1.18 0-2.15-1.08-2.15-2.4 0-1.32.95-2.4 2.15-2.4s2.17 1.08 2.15 2.4c0 1.32-.94 2.4-2.15 2.4Z"/>
+        </svg>
+        Войти через Discord
+      </button>
+      <p id="login-error" class="error-banner hidden">Не удалось войти. Попробуйте ещё раз.</p>
+      <ul class="perks">
+        <li>Заявки рассматривает команда проекта</li>
+        <li>Режимы: MG (гриф) и MA (анархия)</li>
+      </ul>
+    </section>
+
+    <!-- Экран формы -->
+    <section id="form-screen" class="card screen hidden">
+      <h1 id="form-title">Заявка в команду</h1>
+      <p class="lead" id="form-desc"></p>
+
+      <div class="user-bar">
+        <img id="user-avatar" alt="" />
+        <div class="user-info">
+          <strong id="user-name"></strong>
+          <span id="user-id" class="muted small mono"></span>
+        </div>
+        <button id="logout-btn" class="btn btn-ghost">Выйти</button>
+      </div>
+
+      <div class="progress"><div id="progress-bar" class="progress-bar"></div></div>
+
+      <form id="app-form" novalidate>
+        <div id="fields"></div>
+        <button type="submit" class="btn btn-primary" id="submit-btn">Отправить заявку</button>
+      </form>
+    </section>
+
+    <!-- Успех -->
+    <section id="success-screen" class="card screen hidden">
+      <img src="/logo.png" alt="MixerGrief" class="hero-logo small" />
+      <h1>Заявка отправлена</h1>
+      <p class="lead">Ваша заявка ушла в Discord на рассмотрение. Ожидайте ответа от команды.</p>
+      <div class="code-pill">Код заявки: <span id="success-code" class="mono"></span></div>
+    </section>
+  </main>
+
+  <footer class="foot">© MixerGrief · MG (гриф) &amp; MA (анархия)</footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

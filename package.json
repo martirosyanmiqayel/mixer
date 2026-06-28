@@ -1,0 +1,18 @@
+{
+  "name": "mixergrief-forms",
+  "version": "1.0.0",
+  "description": "Форма заявки в команду MixerGrief: вход через Discord, заявки в канал с кнопками Принять/Отклонить. Готово к деплою на Vercel.",
+  "type": "module",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

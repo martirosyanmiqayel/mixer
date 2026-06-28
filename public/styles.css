@@ -1,0 +1,234 @@
+:root {
+  --bg-dark: #22160c;
+  --panel: #261b12;
+  --panel-2: #2f2216;
+  --field: #1c130b;
+  --border: #45331f;
+  --border-2: #574023;
+  --text: #f4e8d6;
+  --muted: #b9a88a;
+  --orange: #e07e2b;
+  --orange-dark: #a8571a;
+  --orange-soft: #f0a44e;
+  --yellow: #ffcf4d;
+  --green: #74b13a;
+  --green-dark: #4f7d24;
+  --discord: #5865f2;
+  --discord-dark: #3c45b5;
+  --danger: #e0563f;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 60px;
+  background: var(--bg-dark);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1000px 620px at 50% -260px, rgba(255, 196, 86, 0.45), rgba(255, 196, 86, 0) 62%),
+    linear-gradient(180deg, #3b2342 0%, #6d3a2c 40%, #7e3f18 64%, #2c1a0c 100%);
+}
+
+/* ── Topbar ── */
+.topbar {
+  width: 100%;
+  max-width: 660px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 4px 28px;
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-mark {
+  width: 44px; height: 44px;
+  border-radius: 11px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.logo-text {
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800; font-size: 22px; color: var(--text);
+  letter-spacing: 0.2px;
+}
+.logo-text b { color: var(--orange); font-weight: 800; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; color: #dff0c8;
+  background: rgba(116, 177, 58, 0.16);
+  border: 1px solid rgba(116, 177, 58, 0.4);
+  padding: 7px 14px; border-radius: 999px;
+}
+.badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+
+/* ── Card ── */
+.container { width: 100%; max-width: 660px; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 38px 40px 40px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+.screen { animation: fade .35s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.hidden { display: none !important; }
+
+h1 {
+  font-family: "Baloo 2", sans-serif;
+  margin: 0 0 12px; font-size: 32px; line-height: 1.1; font-weight: 800;
+  color: var(--text);
+}
+.lead { color: #d6c4a8; font-size: 15.5px; line-height: 1.6; margin: 0 0 4px; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.mono { font-family: ui-monospace, "Cascadia Code", monospace; }
+
+/* ── Логотип на экранах ── */
+.hero-logo {
+  display: block;
+  width: 128px; height: 128px;
+  margin: 0 auto 18px;
+  border-radius: 26px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+}
+.hero-logo.small { width: 88px; height: 88px; border-radius: 20px; }
+#login-screen, #success-screen { text-align: center; }
+#login-screen .lead { max-width: 470px; margin-left: auto; margin-right: auto; }
+
+/* ── Кнопки (блочный «игровой» стиль) ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: "Baloo 2", sans-serif;
+  border: none; border-radius: 12px; padding: 14px 22px;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: filter .12s, transform .06s;
+}
+.btn:active { transform: translateY(2px); }
+.btn:disabled { opacity: .6; cursor: progress; }
+
+.btn-discord {
+  width: 100%; margin-top: 22px; color: #fff;
+  background: var(--discord); border-bottom: 4px solid var(--discord-dark);
+}
+.btn-discord:hover:not(:disabled) { filter: brightness(1.08); }
+.btn-discord:active { border-bottom-width: 2px; }
+
+.btn-primary {
+  width: 100%; margin-top: 10px; color: #2a1404;
+  background: var(--orange); border-bottom: 4px solid var(--orange-dark);
+}
+.btn-primary:hover:not(:disabled) { filter: brightness(1.06); }
+.btn-primary:active { border-bottom-width: 2px; }
+
+.btn-ghost {
+  background: var(--panel-2); border: 1px solid var(--border-2);
+  color: var(--text); padding: 9px 16px; font-size: 14px; border-radius: 10px;
+}
+.btn-ghost:hover { background: #3a2a18; }
+
+/* ── User bar ── */
+.user-bar {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 14px; margin: 20px 0 18px;
+}
+.user-bar img {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--border); border: 2px solid var(--orange);
+}
+.user-info { display: flex; flex-direction: column; flex: 1; min-width: 0; gap: 2px; }
+.user-info strong { font-size: 15px; }
+
+/* ── Прогресс ── */
+.progress { height: 8px; background: #1a120a; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; margin-bottom: 26px; }
+.progress-bar { height: 100%; width: 0%; background: var(--orange); transition: width .3s ease; }
+
+/* ── Поля ── */
+.field { margin-bottom: 22px; }
+.field label.q { display: block; font-weight: 700; font-size: 15px; margin-bottom: 9px; color: var(--text); }
+.field .req { color: var(--orange); }
+.field .hint { display: block; color: var(--muted); font-size: 13px; margin-top: 7px; }
+.wordcount { float: right; font-weight: 700; color: var(--muted); font-size: 12.5px; }
+.wordcount.ok { color: var(--green); }
+
+input[type="text"], input[type="number"], textarea {
+  width: 100%;
+  background: var(--field);
+  border: 1px solid var(--border-2);
+  border-radius: 10px; color: var(--text);
+  padding: 13px 15px; font-size: 15px; font-family: inherit;
+  transition: border-color .12s, background .12s;
+}
+input::placeholder, textarea::placeholder { color: #7a6647; }
+input:focus, textarea:focus { outline: none; border-color: var(--orange); background: #211710; }
+textarea { min-height: 92px; resize: vertical; line-height: 1.5; }
+
+/* ── Выбор (чипы) ── */
+.choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice span {
+  display: inline-block;
+  padding: 11px 20px; border: 1px solid var(--border-2);
+  border-radius: 10px; background: var(--field);
+  cursor: pointer; font-size: 14.5px; font-weight: 700; color: #d8c7aa;
+  transition: all .12s;
+}
+.choice span:hover { border-color: var(--orange); }
+.choice input:checked + span {
+  border-color: var(--orange-dark);
+  background: var(--orange); color: #2a1404;
+}
+.choice input:focus-visible + span { outline: 2px solid var(--yellow); outline-offset: 2px; }
+
+.field.invalid input, .field.invalid textarea { border-color: var(--danger); }
+.field-error { color: #f0a08e; font-size: 13px; margin-top: 7px; font-weight: 600; display: none; }
+.field.invalid .field-error { display: block; }
+
+.error-banner {
+  margin-top: 16px;
+  background: rgba(224, 86, 63, 0.14);
+  border: 1px solid rgba(224, 86, 63, 0.45);
+  color: #f3b3a4; padding: 12px 16px; border-radius: 10px; font-size: 14px;
+}
+
+/* ── Перки ── */
+.perks { list-style: none; padding: 0; margin: 22px auto 0; max-width: 420px; display: grid; gap: 9px; }
+.perks li { position: relative; padding-left: 26px; color: #cdb99c; font-size: 14px; text-align: left; }
+.perks li::before {
+  content: "✓"; position: absolute; left: 0; top: -1px;
+  color: var(--green); font-weight: 800;
+}
+
+/* ── Успех ── */
+.code-pill {
+  display: inline-block; margin-top: 16px;
+  background: var(--field); border: 1px solid var(--border-2);
+  padding: 10px 18px; border-radius: 999px; font-size: 14px; color: var(--muted);
+}
+.code-pill .mono { color: var(--yellow); font-weight: 700; }
+
+.foot { margin-top: 28px; text-align: center; color: #caa980; font-size: 13px; opacity: 0.85; }
+
+@media (max-width: 560px) {
+  .card { padding: 26px 20px 30px; }
+  h1 { font-size: 26px; }
+  .hero-logo { width: 104px; height: 104px; }
+}
